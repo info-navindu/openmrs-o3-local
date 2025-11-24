@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  pacs:
+    image: jodogne/orthanc-plugins
+    container_name: orthanc-pacs
+    restart: unless-stopped
+    ports:
+      - "4242:4242"  # DICOM Port (X-Ray machines send images here)
+      - "8042:8042"  # HTTP Port (Web UI - view images in browser)
+    environment:
+      # PACS Server Name
+      ORTHANC__NAME: "GSLFH_PACS"
+
+      # Authentication (username: password format)
+      ORTHANC__REGISTERED_USERS: '{"orthanc": "orthanc", "admin": "admin123"}'
+
+      # Enable/Disable authentication for specific services
+      ORTHANC__AUTHENTICATION_ENABLED: "true"
+
+      # DICOM AET (Application Entity Title)
+      ORTHANC__DICOM_AET: "ORTHANC"
+
+      # Storage settings
+      ORTHANC__MAXIMUM_STORAGE_SIZE: "0"  # 0 = unlimited
+      ORTHANC__MAXIMUM_PATIENT_COUNT: "0"  # 0 = unlimited
+
+    volumes:
+      # Persistent storage for DICOM images and database
+      - orthanc-storage:/var/lib/orthanc/db
+
+      # Optional: Custom configuration file
+      # - ./orthanc.json:/etc/orthanc/orthanc.json:ro
+
+    networks:
+      - hmis-network
+
+networks:
+  hmis-network:
+    external: true
+  # Old internal network (kept for reference)
+  # pacs-network:
+  #   driver: bridge
+
+volumes:
+  orthanc-storage:
+    driver: local

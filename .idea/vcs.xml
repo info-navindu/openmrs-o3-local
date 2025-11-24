@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/OpenELIS-Global-2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/OpenELIS-Global-2/dataexport" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/OpenELIS-Global-2/plugins" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/OpenELIS-Global-2/tools/Liquibase-Outdated" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/OpenELIS-Global-2/tools/Password-Migrator" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/openmrs-distro-referenceapplication" vcs="Git" />
+  </component>
+</project>

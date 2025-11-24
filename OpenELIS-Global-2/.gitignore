@@ -1,0 +1,52 @@
+# compiled code #
+*.class
+*.DS_Store
+# Package Files #
+*.war
+*.ear
+
+#local use files
+liqubase.properties
+
+# IDE files #
+.idea/
+.vscode/
+.classpath
+.settings/
+.project
+.factorypath
+
+# Maven Files #
+*target/
+
+# Node / Frontend artifacts
+node_modules/
+frontend/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+#Developer specific docker-compose
+/docker-compose.yml
+dev/
+# Additional build files
+src/main/resources/adminPassword.txt
+/OEInstaller/
+/docs_back
+/bin/
+/.apt_generated/
+*/plugins/*.jar
+Patient/*
+volume/database/data
+volume/letsencrypt/
+tools/Liquibase-Outdated
+volume/tomcat/*
+volume/database/data*/*
+volume/logs/*
+volume/ocl/*
+volume/odoo/*
+.specify/temp/
+.cursor/
+.specify/temp/
+**/*checksum*.properties
+**/*checksums*.properties

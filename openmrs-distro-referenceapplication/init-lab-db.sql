@@ -1,0 +1,1 @@
+CREATE SCHEMA clinlims AUTHORIZATION clinlims;

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.itech</groupId>
+		<artifactId>dataexport</artifactId>
+		<version>0.0.0.9</version>
+	</parent>
+	<artifactId>dataexport-api</artifactId>
+	<packaging>jar</packaging>
+	<name>Data Export API</name>
+
+	<properties>
+		<java.version>11</java.version>
+		<maven.compiler.release>11</maven.compiler.release>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.itech</groupId>
+			<artifactId>dataexport-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.13</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<release>11</release>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

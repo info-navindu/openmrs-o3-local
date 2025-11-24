@@ -1,0 +1,38 @@
+# HMIS Integration Configuration
+# This file adds all systems to a shared network for communication
+
+# Usage:
+# 1. Create the network first: docker network create hmis-network
+# 2. For each system, add this to their docker-compose:
+#    networks:
+#      - hmis-network
+#
+# Services can then communicate using container names:
+#   - OpenMRS backend: openmrs-distro-referenceapplication-backend-1
+#   - OpenELIS webapp: openelisglobal-webapp
+#   - OpenELIS FHIR: external-fhir-api
+#   - PACS: orthanc-pacs
+
+networks:
+  hmis-network:
+    external: true
+
+# Integration Points:
+#
+# 1. OpenMRS → OpenELIS (Lab Orders & Results)
+#    - Method: FHIR R4 API
+#    - OpenELIS FHIR endpoint: http://external-fhir-api:8080/fhir/
+#    - Authentication: Configure in OpenMRS
+#
+# 2. OpenMRS → PACS (Radiology Orders & Images)
+#    - Method: DICOM Worklist + DICOM C-STORE
+#    - PACS DICOM endpoint: orthanc-pacs:4242 (AET: ORTHANC)
+#    - PACS Web viewer: http://orthanc-pacs:8042/
+#
+# 3. Lab Results Flow:
+#    OpenMRS (Order) → OpenELIS FHIR API → OpenELIS (Processing)
+#    → OpenELIS FHIR API → OpenMRS (Results)
+#
+# 4. Radiology Flow:
+#    OpenMRS (Order) → PACS (DICOM Worklist) → Imaging Device
+#    → PACS (DICOM Storage) → OpenMRS (View via PACS viewer)

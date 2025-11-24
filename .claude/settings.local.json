@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(test:*)",
+      "Bash(docker compose logs:*)",
+      "Bash(docker ps:*)",
+      "Bash(curl:*)",
+      "Bash(docker logs:*)",
+      "Bash(docker compose stop:*)",
+      "Bash(docker compose:*)",
+      "Bash(docker volume rm:*)",
+      "Bash(docker exec:*)",
+      "Bash(mkdir:*)",
+      "Bash(docker network create:*)",
+      "Bash(timeout 10 curl:*)",
+      "Bash(timeout 5 curl:*)",
+      "Bash(docker network inspect:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
