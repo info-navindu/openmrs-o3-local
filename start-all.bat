@@ -4,6 +4,9 @@ echo  HMIS Integration - Starting All Systems
 echo ========================================
 echo.
 
+REM Store the current directory
+set "SCRIPT_DIR=%~dp0"
+
 echo [1/4] Creating shared network (if not exists)...
 docker network create hmis-network 2>nul
 if %errorlevel% equ 0 (
@@ -14,36 +17,36 @@ if %errorlevel% equ 0 (
 echo.
 
 echo [2/4] Starting OpenMRS O3 (EMR System)...
-cd openmrs-distro-referenceapplication
+pushd "%SCRIPT_DIR%openmrs-distro-referenceapplication"
 docker compose up -d
 if %errorlevel% equ 0 (
     echo      OpenMRS started successfully
 ) else (
     echo      ERROR: Failed to start OpenMRS
 )
-cd ..
+popd
 echo.
 
 echo [3/4] Starting OpenELIS (Laboratory System)...
-cd OpenELIS-Global-2
+pushd "%SCRIPT_DIR%OpenELIS-Global-2"
 docker compose up -d
 if %errorlevel% equ 0 (
     echo      OpenELIS started successfully
 ) else (
     echo      ERROR: Failed to start OpenELIS
 )
-cd ..
+popd
 echo.
 
 echo [4/4] Starting Orthanc PACS (Medical Imaging)...
-cd orthanc-pacs
+pushd "%SCRIPT_DIR%orthanc-pacs"
 docker compose up -d
 if %errorlevel% equ 0 (
     echo      PACS started successfully
 ) else (
     echo      ERROR: Failed to start PACS
 )
-cd ..
+popd
 echo.
 
 echo ========================================
